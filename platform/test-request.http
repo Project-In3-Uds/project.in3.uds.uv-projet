@@ -1,0 +1,26 @@
+### Authentification pour récupérer le JWT
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "adminpass"
+}
+
+### Exemple d'appel protégé avec token (remplace {{jwt_token}} après login)
+
+GET http://localhost:8080/api/reservations
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY1NjI0OSwiZXhwIjoxNzQ1NjkyMjQ5fQ.Y9KBBbAT6aiTa6SJMMPekCPlBTACzcI9XXYXZhGDVBM
+Accept: application/json
+
+### Exemple POST création réservation (protégé)
+
+POST http://localhost:8080/api/reservations
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY1NjI0OSwiZXhwIjoxNzQ1NjkyMjQ5fQ.Y9KBBbAT6aiTa6SJMMPekCPlBTACzcI9XXYXZhGDVBM
+Content-Type: application/json
+
+{
+  "passengerName": "John Doe",
+  "destination": "Paris",
+  "date": "2025-05-01"
+}
