@@ -10,17 +10,26 @@ Content-Type: application/json
 ### Exemple d'appel protégé avec token (remplace {{jwt_token}} après login)
 
 GET http://localhost:8080/api/reservations
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY1NjI0OSwiZXhwIjoxNzQ1NjkyMjQ5fQ.Y9KBBbAT6aiTa6SJMMPekCPlBTACzcI9XXYXZhGDVBM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY3OTE1OCwiZXhwIjoxNzQ1NzE1MTU4fQ.uVXAH_f8HO3-OJ8bqzklRSRhksY1KYMmVFCYDNk96Eo
 Accept: application/json
 
 ### Exemple POST création réservation (protégé)
 
 POST http://localhost:8080/api/reservations
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY1NjI0OSwiZXhwIjoxNzQ1NjkyMjQ5fQ.Y9KBBbAT6aiTa6SJMMPekCPlBTACzcI9XXYXZhGDVBM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY3OTE1OCwiZXhwIjoxNzQ1NzE1MTU4fQ.uVXAH_f8HO3-OJ8bqzklRSRhksY1KYMmVFCYDNk96Eo
 Content-Type: application/json
 
 {
-  "passengerName": "John Doe",
-  "destination": "Paris",
+  "passengerName": "omega de Dschang",
+  "destination": "Dschang",
   "date": "2025-05-01"
 }
+
+### Créer une invitation
+POST http://localhost:8080/api/invitations?email=andersonmetsanoum@gmail.com
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY4MjA4OCwiZXhwIjoxNzQ1NzE4MDg4fQ.bPAEK7AP_0NkYqiOXj9kAnGU4w353r2r3X9lK3yJ8bo
+
+### Valider une invitation avec son token
+GET http://localhost:8080/api/invitations/validate?token=2732080f-d2c3-4979-a9eb-33ebef72e81d
+Content-Type: application/json

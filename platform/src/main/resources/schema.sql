@@ -22,3 +22,11 @@ CREATE TABLE user_roles (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
+
+CREATE TABLE invitation (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    token VARCHAR(255) NOT NULL UNIQUE,
+    expiration_date TIMESTAMP NOT NULL,
+    accepted BOOLEAN DEFAULT FALSE
+);

@@ -21,7 +21,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**").permitAll() // Allow access to /auth/** without authentication
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/api/invitations/validate").permitAll()
                 .anyRequest().authenticated() // Restrict other endpoints
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
