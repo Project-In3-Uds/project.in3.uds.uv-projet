@@ -30,3 +30,10 @@ CREATE TABLE invitation (
     expiration_date TIMESTAMP NOT NULL,
     accepted BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE guest_session (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    expiration_date TIMESTAMP NOT NULL,
+    is_converted_to_account BOOLEAN DEFAULT FALSE
+);
