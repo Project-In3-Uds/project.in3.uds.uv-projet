@@ -33,3 +33,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY4M
 ### Valider une invitation avec son token
 GET http://localhost:8080/api/invitations/validate?token=2732080f-d2c3-4979-a9eb-33ebef72e81d
 Content-Type: application/json
+
+### Réserver en tant qu'invité
+POST http://localhost:8080/guest/reserve?email=guest@example.com&passengerName=John Doe&destination=China&date=2025-05-01
+
+### Convertir une session invitée en compte
+POST http://localhost:8080/guest/register?email=guest@example.com
