@@ -25,6 +25,10 @@ public class User {
 
     private String username;
     private String password;
+    //add agencyName
+    private String agencyName;
+    private String planType;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
@@ -46,5 +50,32 @@ public class User {
     // Getter for roles
     public List<Role> getRoles() {
         return new ArrayList<>(roles);
+    }
+    // Getter for id
+    public Long getId() {
+        return id;
+    }
+    // Getter for agencyName
+    public String getAgencyName() {
+        return agencyName;
+    }
+    // Getter for planType
+    public String getPlanType() {
+        return planType;
+    }
+    // Setter for username
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    // Setter for password
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    // Setter for roles
+    public Set<Role> getRolesSet() {
+        return roles;
+    }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

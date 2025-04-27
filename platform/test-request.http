@@ -28,7 +28,7 @@ Content-Type: application/json
 ### Créer une invitation
 POST http://localhost:8080/api/invitations?email=andersonmetsanoum@gmail.com
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY4MjA4OCwiZXhwIjoxNzQ1NzE4MDg4fQ.bPAEK7AP_0NkYqiOXj9kAnGU4w353r2r3X9lK3yJ8bo
+##Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY4MjA4OCwiZXhwIjoxNzQ1NzE4MDg4fQ.bPAEK7AP_0NkYqiOXj9kAnGU4w353r2r3X9lK3yJ8bo
 
 ### Valider une invitation avec son token
 GET http://localhost:8080/api/invitations/validate?token=2732080f-d2c3-4979-a9eb-33ebef72e81d
@@ -39,3 +39,22 @@ POST http://localhost:8080/guest/reserve?email=guest@example.com&passengerName=J
 
 ### Convertir une session invitée en compte
 POST http://localhost:8080/guest/register?email=guest@example.com
+
+### Test abonnement avec un body JSON
+
+POST http://localhost:8080/api/billing/subscribe
+##Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTY5MDcwNiwiZXhwIjoxNzQ1NzI2NzA2fQ.SdbzMOmILtNsLQMsAbWDdl9Uo8JEffoVLB8LnlsgJAU
+Content-Type: application/json
+
+{
+  "agencyName": "BestTravel",
+  "planType": "trial"
+}
+
+
+###
+
+### Vérifier que l'agence est encore abonnée (True attendu)
+GET http://localhost:8080/api/billing/validate?agencyName=BestTravel
+Accept: application/json
+
