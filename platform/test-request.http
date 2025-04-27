@@ -58,3 +58,11 @@ Content-Type: application/json
 GET http://localhost:8080/api/billing/validate?agencyName=BestTravel
 Accept: application/json
 
+### Création d'une invitation (et envoi email)
+POST http://localhost:8080/api/invitations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTcyODc5NCwiZXhwIjoxNzQ1NzY0Nzk0fQ.KE2sthF0hK3m_CaflgBFZyUL2psBp2K11IIGAoFmbeQ
+
+{
+  "email": "andersonmetsanoum@gmail.com"
+}

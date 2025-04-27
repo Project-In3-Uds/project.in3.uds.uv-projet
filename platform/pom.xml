@@ -91,6 +91,14 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- Pour l'envoi d'email -->
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-mail</artifactId>
+    		<version>3.4.4</version>
+		</dependency>
+
 	</dependencies>
 	
 	<build>

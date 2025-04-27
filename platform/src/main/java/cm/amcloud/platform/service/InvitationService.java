@@ -11,9 +11,11 @@ import cm.amcloud.platform.repository.InvitationRepository;
 public class InvitationService {
 
     private final InvitationRepository invitationRepository;
+    private final NotificationService notificationService;
 
-    public InvitationService(InvitationRepository invitationRepository) {
+    public InvitationService(InvitationRepository invitationRepository, NotificationService notificationService) {
         this.invitationRepository = invitationRepository;
+        this.notificationService = notificationService;
     }
 
     public Invitation createInvitation(String email) {
@@ -22,7 +24,17 @@ public class InvitationService {
         invitation.setToken(UUID.randomUUID().toString()); // Génération token unique
         invitation.setExpirationDate(LocalDateTime.now().plusDays(3)); // Expire après 3 jours
         invitation.setAccepted(false);
-        return invitationRepository.save(invitation);
+
+        Invitation savedInvitation = invitationRepository.save(invitation);
+
+        // Envoyer l'email d'invitation
+        notificationService.sendEmail(
+            email,
+            "Invitation à rejoindre la plateforme",
+            "Vous êtes invité à rejoindre la plateforme. Veuillez valider votre invitation avec le lien envoyé."
+        );
+
+        return savedInvitation;
     }
 
     public boolean validateInvitation(String token) {

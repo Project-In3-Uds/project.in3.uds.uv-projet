@@ -2,6 +2,7 @@ package cm.amcloud.platform.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import cm.amcloud.platform.dto.InviteRequest;
 import cm.amcloud.platform.model.Invitation;
 import cm.amcloud.platform.service.InvitationService;
 
@@ -16,8 +17,8 @@ public class InvitationController {
     }
 
     @PostMapping
-    public String invite(@RequestParam String email) {
-        Invitation invitation = invitationService.createInvitation(email);
+    public String invite(@RequestBody InviteRequest inviteRequest) {
+        Invitation invitation = invitationService.createInvitation(inviteRequest.getEmail());
         return invitation.getToken(); // Retourne le token UUID généré
     }
 
