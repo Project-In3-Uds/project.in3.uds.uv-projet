@@ -37,3 +37,14 @@ CREATE TABLE guest_session (
     expiration_date TIMESTAMP NOT NULL,
     is_converted_to_account BOOLEAN DEFAULT FALSE
 );
+
+CREATE TABLE subscriptions (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    agency_name VARCHAR(255) NOT NULL UNIQUE,
+    plan_type VARCHAR(50) NOT NULL,
+    start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    end_date TIMESTAMP,
+    active BOOLEAN DEFAULT TRUE
+);
+
+ALTER TABLE users ADD COLUMN agency_name VARCHAR(255);

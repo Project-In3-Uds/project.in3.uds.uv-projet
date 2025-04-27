@@ -1,0 +1,54 @@
+### 1. Authentification
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "adminpass"
+}
+
+> {% 
+// Nettoyer les guillemets du token
+const tokenRaw = response.body;
+const token = tokenRaw.replace(/"/g, "");
+client.global.set("jwt_token", token);
+%}
+
+###
+
+### 2. Création de souscription pour l’agence
+POST http://localhost:8080/api/billing/subscribe
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTcxODM2OCwiZXhwIjoxNzQ1NzU0MzY4fQ.C0tqinLmDHGSECkdVLIToL1GPazxRKbGYaP8xn4_5AQ
+Content-Type: application/json
+
+{
+  "agencyName": "AgenceAlpha",
+  "planType": "STANDARD"
+}
+
+###
+
+### 3. Vérifier la souscription de l’agence
+GET http://localhost:8080/api/billing/validate?agencyName=AgenceAlpha
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTcxODM2OCwiZXhwIjoxNzQ1NzU0MzY4fQ.C0tqinLmDHGSECkdVLIToL1GPazxRKbGYaP8xn4_5AQ
+Accept: application/json
+
+###
+
+### 4. Créer une réservation
+POST http://localhost:8080/api/reservations
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTcxODM2OCwiZXhwIjoxNzQ1NzU0MzY4fQ.C0tqinLmDHGSECkdVLIToL1GPazxRKbGYaP8xn4_5AQ
+Content-Type: application/json
+
+{
+  "passengerName": "vanessa",
+  "destination": "Bafoussam",
+  "date": "2025-05-15"
+}
+
+###
+
+### 5. Lister les réservations
+GET http://localhost:8080/api/reservations
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTcxODM2OCwiZXhwIjoxNzQ1NzU0MzY4fQ.C0tqinLmDHGSECkdVLIToL1GPazxRKbGYaP8xn4_5AQ
+Accept: application/json

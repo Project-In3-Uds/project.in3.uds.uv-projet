@@ -26,7 +26,9 @@ public class SecurityConfig {
                     "/v3/api-docs/**", 
                     "/api/invitations/validate",
                     "/guest/reserve",
-                    "/guest/register").permitAll()
+                    "/guest/register",
+                    "/api/billing/subscribe",
+                    "/api/billing/validate").permitAll()
                 .anyRequest().authenticated() // Restrict other endpoints
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
